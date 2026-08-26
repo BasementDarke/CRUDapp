@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using BookQuote.Data;
 using BookQuote.Data.Entities;
 using BookQuote.Models.Quotes;
