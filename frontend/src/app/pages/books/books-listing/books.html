@@ -1,0 +1,56 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<div class="text-center py-5 rounded-2">
+  <h1>Books</h1>
+  <div>
+    <div>Add new Book   <a class="btn btn-primary" [routerLink]="['create']" role="button">Add</a></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row mt-5 w-50">
+
+      <div class="container list">
+        @if (book$ | async;as books) {
+          @if (books.length > 0){
+            <ul class="list-group">
+            @for (item of books; track $index){
+              <li class="list-group-item d-flex justify-content-between-align-items-start mb-2 border px-4 py-3 rounded-3">
+                <div class="flex-grow-1">
+                  <div class="fw-bold">{{item.title}}</div>
+                  <div>{{item.author}}</div>
+                  <div>{{item.publishDate}}</div>
+                </div>  
+                <span class="text-secondary">
+                  <i [routerLink]="['update', item.id]" class="fa-solid fa-pen mouse-hover" data-toggle="tooltip" data-placement="top" title="Edit Book"></i>
+                </span>  
+                <span class="text-secondary" data-toggle="tooltip" data-placement="top" title="Delete Book">
+                  <i class="fa-solid fa-trash mouse-hover" (click)="openModalFunction(myModalContent)"></i> 
+                  <ng-template #myModalContent let-modal>
+
+                      <div class="modal-header">
+                          Delete Book
+                      </div>
+
+                      <div class="modal-body">
+                        Are you sure you want to delete this Book?
+                      </div>
+
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" (click)="modal.close()">Close</button>
+                          <a [routerLink]="['delete', item.id]"><button type="button" class="btn btn-danger" (click)="modal.close()">Delete</button></a>
+                      </div>
+
+                  </ng-template>
+                </span>
+              </li>
+            }
+            </ul>
+
+          } @else {
+            <p>No Books Found...</p>
+          }
+        }
+
+  </div>
+</div>

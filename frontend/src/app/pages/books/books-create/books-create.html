@@ -1,0 +1,34 @@
+<div class="text-center py-5 rounded-2">
+  <h1>Create new Book</h1>
+</div>
+
+<div class="container">
+  <div class="row mt-5 w-50">
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="bookInputTitle" class="form-label">Book Title</label>
+        <input type="text" class="form-control" id="bookInputTitle" formControlName="title">
+      </div>
+      <div class="mb-3">
+        <label for="bookInputAuthor" class="form-label">Book Author</label>
+        <input type="text" class="form-control" id="bookInputAuthor" formControlName="author">
+      </div>
+      <div class="mb-3">
+        <label for="bookInputDate" class="form-label">Publish Date</label>
+        <input
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp"
+            formControlName="publishDate"
+            ngbDatepicker
+            #d="ngbDatepicker"
+        />
+        <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
+        <label class="form-check-label" for="bookInputDate">Select Date</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+
+  </div>
+</div>

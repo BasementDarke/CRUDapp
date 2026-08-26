@@ -1,0 +1,21 @@
+<div class="text-center py-5 rounded-2">
+  <h1>Edit Quote</h1>
+</div>
+
+<div class="container">
+  <div class="row mt-5 w-50">
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="quoteInputText" class="form-label">Quote</label>
+        <input type="text" class="form-control" id="quoteInputTitle" formControlName="text">
+      </div>
+      <div class="mb-3">
+        <label for="quoteInputOrigin" class="form-label">Quote origin</label>
+        <input type="text" class="form-control" id="quoteInputOrigin" formControlName="origin">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+  </div>
+</div>

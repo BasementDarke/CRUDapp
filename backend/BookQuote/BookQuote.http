@@ -1,0 +1,69 @@
+@BookQuote_HostAddress = http://localhost:7149
+
+GET {{BookQuote_HostAddress}}/books/
+Accept: application/json
+
+###
+
+GET {{BookQuote_HostAddress}}/books/1
+Accept: application/json
+
+###
+
+POST {{BookQuote_HostAddress}}/books
+Content-Type: application/json
+
+{
+    "title": "Test 3",
+    "author": "Burg The Handsome",
+    "publishDate": "2020-10-10"
+}
+
+###
+
+PUT {{BookQuote_HostAddress}}/books/1
+Content-Type: application/json
+
+{
+    "title": "Test 2, New Edition",
+    "author": "Burg The Great",
+    "publishDate": "2004-05-12"
+}
+
+###
+
+DELETE {{BookQuote_HostAddress}}/books/9
+
+###
+
+GET {{BookQuote_HostAddress}}/quotes/
+Accept: application/json
+
+###
+
+GET {{BookQuote_HostAddress}}/quotes/1
+Accept: application/json
+
+###
+
+POST {{BookQuote_HostAddress}}/quotes
+Content-Type: application/json
+
+{
+    "text": "To be or not to be",
+    "origin": "Burg The Awesome"
+}
+
+###
+
+PUT {{BookQuote_HostAddress}}/quotes/2
+Content-Type: application/json
+
+{
+    "text": "Testing Editing",
+    "origin": "Burg The Great"
+}
+
+###
+
+DELETE {{BookQuote_HostAddress}}/quotes/2

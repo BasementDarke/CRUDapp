@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row mt-5 w-50">
+
+        <h2>Register account</h2>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Username" formControlName="username">
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" placeholder="Password" formControlName="password">
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+        </form>
+
+  </div>
+</div>

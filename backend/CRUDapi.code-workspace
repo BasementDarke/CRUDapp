@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../CRUDapp"
+		}
+	],
+	"settings": {
+		"dotnet.defaultSolution": "BookQuote.sln"
+	}
+}
