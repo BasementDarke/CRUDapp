@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "CRUDapp": {
+    "crud-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -64,10 +64,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "CRUDapp:build:production"
+              "buildTarget": "crud-app:build:production"
             },
             "development": {
-              "buildTarget": "CRUDapp:build:development"
+              "buildTarget": "crud-app:build:development"
             }
           },
           "options": {
