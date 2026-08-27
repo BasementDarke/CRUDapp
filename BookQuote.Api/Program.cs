@@ -88,7 +88,7 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 
 var app = builder.Build();
 
-// app.MigrateDb(); // Do we need auto* db migration? 
+app.MigrateDb(); // Do we need auto* db migration? 
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

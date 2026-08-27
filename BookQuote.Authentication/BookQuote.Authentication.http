@@ -1,6 +1,0 @@
-@BookQuote.Authentication_HostAddress = http://localhost:5082
-
-GET {{BookQuote.Authentication_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
