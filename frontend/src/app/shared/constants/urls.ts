@@ -8,4 +8,5 @@ export class ApiUrls {
     static readonly RegisterUrl = `/auth/register`
     static readonly LoginUrl = `/auth/login`
     static readonly MeUrl = `/auth/me`
+    static readonly LogoutUrl = `/auth/logout`
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable} from 'rxjs';
 import { UserDto } from '../models/user.model';
 import { ApiUrls } from '../constants/urls';
 import { UserRegistrationDto } from '../models/user-registration.model';
@@ -22,5 +22,9 @@ export class AuthServiceTs {
 
   public meGet(): Observable<UserDto> {
     return this.http.get<UserDto>(ApiUrls.MeUrl)
+  }
+
+  public logout(): Observable<unknown> {
+    return this.http.post(ApiUrls.LogoutUrl, null);
   }
 }

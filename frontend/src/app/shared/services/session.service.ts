@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { AuthServiceTs } from './auth.service';
 import { catchError, of, tap } from 'rxjs';
 
@@ -6,26 +6,20 @@ import { catchError, of, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class SessionService {
-  private authenticated = false;
+  private _authenticated = signal<boolean>(false);
+  readonly authenticated = this._authenticated.asReadonly()
   authService = inject(AuthServiceTs)
 
   load() {
+    return this.checkUserAuthentication()
+  }
+
+  public checkUserAuthentication() {
     return this.authService.meGet().pipe(tap(() => {
-      this.authenticated = true
+      this._authenticated.set(true)
     }), catchError(() => {
-      this.authenticated = false
+      this._authenticated.set(false)
       return of(null)
     }))
   }
-
-  isAuthenticated(){
-    return this.authenticated;
-  }
-
-  // Check /me endpoint
-  // Check return type of /me endpoint
-  // IF it is 401
-  //    redirect to /login
-  // ELSE
-  //    redirect to a {homepage}
 }

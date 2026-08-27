@@ -11,7 +11,8 @@ export const routes: Routes = [
     { path: 'books', children: BookRoutes, canActivate: [authGuard]},
     { path: 'quotes', children: QuotesRoutes, canActivate: [authGuard]},
     { path: 'login', component: LoginUser},
-    { path: 'register', component: RegisterUser}
+    { path: 'register', component: RegisterUser},
+    { path: '**', component: LoginUser}
 ];
 
 

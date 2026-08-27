@@ -3,6 +3,8 @@ import { FormsModule, NonNullableFormBuilder, ReactiveFormsModule, Validators } 
 import { Router, RouterLink } from '@angular/router';
 import { AuthServiceTs } from '../../../shared/services/auth.service';
 import { ToastService } from '../../../shared/services/toast.service';
+import { SessionService } from '../../../shared/services/session.service';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-login-user',
@@ -14,9 +16,8 @@ export class LoginUser {
   formBuilder = inject(NonNullableFormBuilder);
   authService = inject(AuthServiceTs);
   router = inject(Router);
-
-
-  readonly toastService = inject(ToastService);
+  toastService = inject(ToastService);
+  sessionService = inject(SessionService)
 
   form = this.formBuilder.group({
     username: this.formBuilder.control<string>('', {
@@ -36,13 +37,10 @@ export class LoginUser {
         username: this.form.value.username!,
         password: this.form.value.password!
       })
-      .subscribe(response => {
+      .pipe(switchMap(() => this.sessionService.checkUserAuthentication()))
+      .subscribe(() => {
         this.toastService.show({message: "Login successful.", classname:"bg-success text-light", delay: 10000 })
-        location.href='';
-      });
-  }
-
-  logout(): void{
-    this.toastService.show({message: "Logged out.", classname:"bg-success text-light", delay: 10000 })
+        this.router.navigateByUrl('')
+    });
   }
 }

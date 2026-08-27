@@ -15,9 +15,7 @@ export class BooksDelete {
   private route = inject(ActivatedRoute)
   readonly bookId = Number(this.route.snapshot.paramMap.get('id'));
   
-  
   constructor() {
-    console.log(this.bookId)
     this.booksService.deleteBook(this.bookId).subscribe()
     this.router.navigateByUrl('books')
   }
