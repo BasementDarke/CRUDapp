@@ -39,6 +39,7 @@ export class LoginUser {
       })
       .pipe(switchMap(() => this.sessionService.checkUserAuthentication()))
       .subscribe(() => {
+        const authorized = this.sessionService.authenticated;
         this.toastService.show({message: "Login successful.", classname:"bg-success text-light", delay: 10000 })
         this.router.navigateByUrl('')
     });

@@ -70,17 +70,6 @@ builder.Services
 builder.Services.AddAuthorization();
 builder.AddDb();
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy(name: "Test", builder =>
-//    {
-//        builder.WithOrigins()
-//        .AllowCredentials()
-//        .WithMethods()
-//        .WithHeaders();
-//    });
-//});
-
 builder.Services.ConfigureHttpJsonOptions(options =>
 {
     options.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
@@ -96,7 +85,6 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 app.UseHttpsRedirection();
-// app.UseCors("Test");
 
 app.UseAuthentication();
 app.UseAuthorization();
