@@ -7,7 +7,6 @@ namespace BookQuote.Data;
 
 public static class ModelExtensions
 {
-    // Execute any pending migrations
     public static void MigrateDb(this WebApplication App)
     {
         using var scope = App.Services.CreateScope();
@@ -15,7 +14,6 @@ public static class ModelExtensions
         dbContext.Database.Migrate();
     }
 
-    // Register Db using appsettings configuration (apperantly this should be done differently)
     public static void AddDb(this WebApplicationBuilder builder)
     {
         var connString = builder.Configuration.GetConnectionString("BookQuote");

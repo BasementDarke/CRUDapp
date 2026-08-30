@@ -4,7 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthServiceTs } from '../../../shared/services/auth.service';
 import { ToastService } from '../../../shared/services/toast.service';
 import { SessionService } from '../../../shared/services/session.service';
-import { switchMap } from 'rxjs';
+import { switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-login-user',
@@ -37,9 +37,15 @@ export class LoginUser {
         username: this.form.value.username!,
         password: this.form.value.password!
       })
-      .pipe(switchMap(() => this.sessionService.checkUserAuthentication()))
-      .subscribe(() => {
-        const authorized = this.sessionService.authenticated;
+      .pipe(
+        tap({error: (resp) => {
+        if(resp.status === 401){
+            this.toastService.show({message: "Login Failed. Please check your username and password.", classname:"bg-danger text-light", delay: 10000 })
+        }
+      }}),
+        switchMap(() => this.sessionService.checkUserAuthentication())
+      )
+      .subscribe((resp) => {
         this.toastService.show({message: "Login successful.", classname:"bg-success text-light", delay: 10000 })
         this.router.navigateByUrl('')
     });

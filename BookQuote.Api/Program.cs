@@ -75,7 +75,11 @@ builder.Services.ConfigureHttpJsonOptions(options =>
     options.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
 });
 
+builder.Services.AddAntiforgery();
+
 var app = builder.Build();
+
+app.UseAntiforgery();
 
 app.MigrateDb(); // Do we need auto* db migration? 
 

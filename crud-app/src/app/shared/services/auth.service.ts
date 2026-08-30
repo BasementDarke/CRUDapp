@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable} from 'rxjs';
 import { UserDto } from '../models/user.model';
@@ -16,8 +16,8 @@ export class AuthServiceTs {
     return this.http.post(ApiUrls.RegisterUrl, requestBody)
   }
 
-  public loginPost(requestBody: UserLoginDto): Observable<unknown> {
-    return this.http.post(ApiUrls.LoginUrl, requestBody);
+  public loginPost(requestBody: UserLoginDto): Observable<HttpResponse<unknown>> {
+    return this.http.post(ApiUrls.LoginUrl, requestBody, {observe: 'response'});
   }
 
   public meGet(): Observable<UserDto> {
