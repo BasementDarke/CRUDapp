@@ -49,5 +49,6 @@ export class LoginUser {
         this.toastService.show({message: "Login successful.", classname:"bg-success text-light", delay: 10000 })
         this.router.navigateByUrl('')
     });
+    
   }
 }
